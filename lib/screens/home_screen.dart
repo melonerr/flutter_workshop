@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:workshop01/model/category.dart';
 import 'package:workshop01/model/programingLang.dart';
+import 'package:workshop01/screens/course_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -166,7 +167,15 @@ class HomePage extends StatelessWidget {
                   itemCount: programingLangData.length,
                   itemBuilder: (BuildContext context, int index) {
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                CourseScreen(programingLangData[index]),
+                          ),
+                        );
+                      },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                           vertical: 20,
@@ -174,12 +183,12 @@ class HomePage extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: Color(0xFFF5F3FF),
+                          color: const Color(0xFFF5F3FF),
                         ),
                         child: Column(
                           children: [
                             Padding(
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: Image.asset(
                                 "assets/images/${programingLangData[index].image}",
                                 width: 80,
